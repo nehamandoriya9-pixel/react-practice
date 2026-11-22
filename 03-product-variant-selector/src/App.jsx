@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router"
 import Product from "./components/Product"
+import Table from "./components/Table"
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
    <div>
    <Routes>
     <Route path="/" element={<Product />}/>
+    <Route path="/table" element={<Table />} />
    </Routes>
    </div>
   )

@@ -4,6 +4,7 @@ import { useRef } from 'react'
 export default function Uncontrolled() {
   const inputRef = useRef(null);
   console.log(inputRef)
+  
   function handleClick(e) {
     e.preventDefault();
     console.log(inputRef.current.value)
