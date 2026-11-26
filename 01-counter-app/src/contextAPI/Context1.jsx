@@ -6,14 +6,18 @@ export default function Context1() {
   const [step, setStep] = useState(0)
 
   const Increament = () => {
-    setCount(count + Number(step))
+    setCount(prev => prev + Number(step))
   }
 
-  const Decrement = () => {
-    if (count > 0 && count >= step) {
-      setCount(count - Number(step))
+ const Decrement = () => {
+  setCount(prev => {
+    if (prev > 0 && prev >= step) {
+      return prev - Number(step)
+    } else {
+      return prev
     }
-  } 
+  })
+}
   return (
      <div className="min-h-screen flex justify-center bg-gray-300 items-center">
     <div className="w-xl bg-gray-400 relative rounded-xl shadow-md p-2 space-y-4">
@@ -22,7 +26,11 @@ export default function Context1() {
         <input 
       type="number" 
       value={step}
-      onChange={(e) => setStep(e.target.value)}
+      onChange={(e) => {
+        if (Number(e.target.value) >= 0){
+          setStep(e.target.value)
+        }
+        }}
       className="bg-gray-100 rounded-md shadow-md p-1 ml-6 mb-4 "/>
       <h2 className="font-bold text-sm">Count: {count}</h2>
       </div>
