@@ -5,8 +5,13 @@ export default function Dashboard() {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [users, setUsers] = useState(() => {
-    const saved = localStorage.getItem("user");
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem("user");
+      return saved ? JSON.parse(saved) : [];
+    } catch (error) {
+      console.log("Failed load transations: ", error);
+      return [];
+    }
   });
   const [date, setDate] = useState("");
   const [type, setType] = useState("");
